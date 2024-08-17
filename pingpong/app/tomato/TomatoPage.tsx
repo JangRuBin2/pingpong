@@ -15,7 +15,9 @@ const TomatoPage = () => {
   const handleShake = () => {
     setIsShaking(true);
     setTimeout(() => setIsShaking(false), 500); // 애니메이션 종료 후 상태 리셋
+    setTomatoHP((prev) => prev - 1);
   };
+  const [tomatoHP, setTomatoHP] = useState<number>(30);
   const router = useRouter();
   const handleTomage = () => {
     setTomatoValue((prev) => ({ ...prev, name: "김토마토", age: 13 }));
@@ -25,7 +27,8 @@ const TomatoPage = () => {
   };
   useEffect(() => {
     console.log("tomatoValue : ", tomatoValue);
-  }, [tomatoValue]);
+    console.log("tomatoHP : ", tomatoHP);
+  }, [tomatoValue, tomatoHP]);
   return (
     <div
       style={{
